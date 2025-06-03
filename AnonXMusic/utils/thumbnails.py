@@ -1,16 +1,20 @@
+import asyncio
 import os
-import re
 import random
+import re
+import textwrap
 import aiofiles
 import aiohttp
-import random
-import requests
-import os
-from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont
-from unidecode import unidecode
+from PIL import (Image, ImageDraw, ImageEnhance, ImageFilter,
+                 ImageFont, ImageOps)
 from youtubesearchpython.__future__ import VideosSearch
-from AnonXMusic import app
+import numpy as np
 from config import YOUTUBE_IMG_URL
+
+
+def make_col():
+    return (random.randint(0,255),random.randint(0,255),random.randint(0,255))
+
 
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
@@ -20,126 +24,126 @@ def changeImageSize(maxWidth, maxHeight, image):
     newImage = image.resize((newWidth, newHeight))
     return newImage
 
-def clear(text):
-    list = text.split(" ")
-    title = ""
-    for i in list:
-        if len(title) + len(i) < 60:
-            title += " " + i
-    return title.strip()
-
-def random_color():
-    return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-
-
-def predefined_color():
-    colors = [
-        (255, 0, 0),
-        (255, 255, 255),
-        (0, 0, 255),
-        (255, 255, 0),
-        (0, 255, 0),
-        (255, 105, 180),
-        (128, 0, 128)
-    ]
-    return random.choice(colors)
-
 def truncate(text):
     list = text.split(" ")
-    text1, text2 = "", ""
+    text1 = ""
+    text2 = ""    
     for i in list:
         if len(text1) + len(i) < 30:        
             text1 += " " + i
         elif len(text2) + len(i) < 30:       
             text2 += " " + i
-    return [text1.strip(), text2.strip()]
 
-async def get_thumb(videoid: str):
-    if os.path.isfile(f"cache/{videoid}.png"):
-        return f"cache/{videoid}.png"
+    text1 = text1.strip()
+    text2 = text2.strip()     
+    return [text1,text2]
 
-    url = f"https://www.youtube.com/watch?v={videoid}"
+async def get_thumb(videoid):
     try:
-        results = VideosSearch(url, limit=1)
-        for result in (await results.next())["result"]:
-            try:
-                title = result["title"]
-                title = re.sub("\W+", " ", title)
-                title = title.title()
-            except:
-                title = "Unsupported Title"
-            try:
-                duration = result["duration"]
-            except:
-                duration = "Unknown Mins"
-            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
-            try:
-                views = result["viewCount"]["short"]
-            except:
-                views = "Unknown Views"
-            try:
-                channel = result["channel"]["name"]
-            except:
-                channel = "Unknown Channel"
-            try:
-                upload_date = result["publishedTime"]
-            except:
-                upload_date = "Unknown Date"
+        if os.path.isfile(f"cache/{videoid}.jpg"):
+            return f"cache/{videoid}.jpg"
 
-        async with aiohttp.ClientSession() as session:
-            async with session.get(thumbnail) as resp:
-                if resp.status == 200:
-                    f = await aiofiles.open(f"cache/thumb{videoid}.png", mode="wb")
-                    await f.write(await resp.read())
-                    await f.close()
+        url = f"https://www.youtube.com/watch?v={videoid}"
+        if 1==1:
+            results = VideosSearch(url, limit=1)
+            for result in (await results.next())["result"]:
+                try:
+                    title = result["title"]
+                    title = re.sub("\W+", " ", title)
+                    title = title.title()
+                except:
+                    title = "Unsupported Title"
+                try:
+                    duration = result["duration"]
+                except:
+                    duration = "Unknown Mins"
+                thumbnail = result["thumbnails"][0]["url"].split("?")[0]
+                try:
+                    views = result["viewCount"]["short"]
+                except:
+                    views = "Unknown Views"
+                try:
+                    channel = result["channel"]["name"]
+                except:
+                    channel = "Unknown Channel"
 
-        youtube = Image.open(f"cache/thumb{videoid}.png")
-        blurred_thumbnail = youtube.filter(ImageFilter.GaussianBlur(7))
-        icon_path = "AnonXMusic/AM/tt.png"
-        icon = Image.open(icon_path)
-        icon_size = (850, 800)
-        icon = icon.resize(icon_size)
-        thumbnail_width, thumbnail_height = blurred_thumbnail.size
-        icon_width, icon_height = icon.size
-        offset_left = 0
-        offset_right = 0
-        offset_up = 0
-        offset_down = 0
-        
-        icon_position = (
-        (thumbnail_width - icon_width) // 2 + offset_right - offset_left,
-        (thumbnail_height - icon_height) // 2 + offset_down - offset_up
-    )
-        blurred_thumbnail.paste(icon, icon_position, icon.convert('RGBA').split()[3])
-        original_thumbnail = youtube.resize((215, 170))
-        original_with_border = Image.new("RGBA", original_thumbnail.size, (0, 0, 0, 0))
-        original_with_border.paste(original_thumbnail, (0, 0), original_thumbnail.convert('RGBA').split()[3])
-        original_offset_left = 165
-        original_offset_right = 0
-        original_offset_up = 100
-        original_offset_down = 0
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f"http://img.youtube.com/vi/{videoid}/maxresdefault.jpg") as resp:
+                    if resp.status == 200:
+                        f = await aiofiles.open(
+                            f"cache/thumb{videoid}.jpg", mode="wb"
+                        )
+                        await f.write(await resp.read())
+                        await f.close()
 
-        original_position = (
-        (thumbnail_width - original_with_border.width) // 2 + original_offset_right - original_offset_left, 
-        (thumbnail_height - original_with_border.height) // 2 + original_offset_down - original_offset_up
-    )
-        blurred_thumbnail.paste(original_with_border, original_position)
-        try:
-            font = ImageFont.truetype("AnonXMusic/AM/f.ttf", 20)
-        except IOError:
-            font = ImageFont.load_default()
-        draw = ImageDraw.Draw(blurred_thumbnail)
-        title_words = title.split()[:6] 
-        truncated_title = ' '.join(title_words)
-        draw.text((600, 190), f"{app.me.first_name}", font=font, fill=predefined_color())
-        draw.text((600, 220), f"{truncated_title}", font=font, fill=(255, 255,255))
-        draw.text((600, 260), f"{channel}", font=font, fill=(255, 255,255))
-        try:
-            os.remove(f"cache/thumb{videoid}.png")
-        except:
-            pass
-        blurred_thumbnail.save(f"cache/{videoid}.png")
-        return f"cache/{videoid}.png"
+            youtube = Image.open(f"cache/thumb{videoid}.jpg")
+            image1 = changeImageSize(1280, 720, youtube)
+            image2 = image1.convert("RGBA")
+            background = image2.filter(filter=ImageFilter.BoxBlur(30))
+            enhancer = ImageEnhance.Brightness(background)
+            background = enhancer.enhance(0.6)
+            image2 = background
+                                                                                            
+            circle = Image.open("assets/circle.png")
+
+            # changing circle color
+            im = circle
+            im = im.convert('RGBA')
+            color = make_col()
+
+            data = np.array(im)
+            red, green, blue, alpha = data.T
+
+            white_areas = (red == 255) & (blue == 255) & (green == 255)
+            data[..., :-1][white_areas.T] = color
+
+            im2 = Image.fromarray(data)
+            circle = im2
+            # done
+
+            image3 = image1.crop((280,0,1000,720))
+            lum_img = Image.new('L', [720,720] , 0)
+            draw = ImageDraw.Draw(lum_img)
+            draw.pieslice([(0,0), (720,720)], 0, 360, fill = 255, outline = "white")
+            img_arr = np.array(image3)
+            lum_img_arr = np.array(lum_img)
+            final_img_arr = np.dstack((img_arr,lum_img_arr))
+            image3 = Image.fromarray(final_img_arr)
+            image3 = image3.resize((600,600))
+            
+
+            image2.paste(image3, (50,70), mask = image3)
+            image2.paste(circle, (0,0), mask = circle)
+
+            # fonts
+            font1 = ImageFont.truetype('assets/font.ttf', 30)
+            font2 = ImageFont.truetype('assets/font2.ttf', 70)
+            font3 = ImageFont.truetype('assets/font2.ttf', 40)
+            font4 = ImageFont.truetype('assets/font2.ttf', 35)
+
+            image4 = ImageDraw.Draw(image2)
+            image4.text((10, 10), "ACE x MUSIC", fill="white", font = font1, align ="left") 
+            image4.text((670, 150), "NOW PLAYING", fill="white", font = font2, stroke_width=2, stroke_fill="white", align ="left") 
+
+            # title
+            title1 = truncate(title)
+            image4.text((670, 300), text=title1[0], fill="white", stroke_width=1, stroke_fill="white",font = font3, align ="left") 
+            image4.text((670, 350), text=title1[1], fill="white", stroke_width=1, stroke_fill="white", font = font3, align ="left") 
+
+            # description
+            views = f"Views : {views}"
+            duration = f"Duration : {duration} Mins"
+            channel = f"Channel : {channel}"
+
+            image4.text((670, 450), text=views, fill="white", font = font4, align ="left") 
+            image4.text((670, 500), text=duration, fill="white", font = font4, align ="left") 
+            image4.text((670, 550), text=channel, fill="white", font = font4, align ="left")
+            
+            image2 = ImageOps.expand(image2,border=20,fill=make_col())
+            image2 = image2.convert('RGB')
+            image2.save(f"cache/{videoid}.jpg")
+            file = f"cache/{videoid}.jpg"
+            return file
     except Exception as e:
         print(e)
         return YOUTUBE_IMG_URL
