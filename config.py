@@ -23,11 +23,11 @@ YT_API_KEY = getenv("YT_API_KEY", None )
 #API_URL = getenv("API_URL", 'https://api.thequickearn.xyz') #youtube song url
 #API_KEY = getenv("API_KEY", '30DxNexGenBotsc0db7b') # 
 
-DURATION_LIMIT = int(getenv("DURATION_LIMIT", 60*60)) # 2 hours
+DURATION_LIMIT = int(getenv("DURATION_LIMIT", 100*100)) # 2 hours
 VIDEO_DURATION_LIMIT = int(getenv("VIDEO_DURATION_LIMIT", 60*20)) # 20 minutes
 
 # Chat id of a group for logging bot's activities
-LOGGER_ID = int(getenv("LOGGER_ID", -1001964294961))
+LOGGER_ID = int(getenv("LOGGER_ID", None))
 
 # Get this value from @FallenxBot on Telegram by /id
 OWNER_ID = int(getenv("OWNER_ID", 5111294407))
@@ -40,15 +40,15 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/mrcutex1/riyumusic",
+    "https://github.com/mrcutex1/sanatni",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 GIT_TOKEN = getenv(
     "GIT_TOKEN", None
 )  # Fill this variable if your upstream repository is private
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/Ace_networkop")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/amigr8")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/sanatanibeats")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/sanatanisupport")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", True))
