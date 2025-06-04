@@ -52,7 +52,7 @@ SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/sanatanisupport")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", True))
-ASSISTANT_LEAVE_TIME = int(getenv("ASSISTANT_LEAVE_TIME",  6400))
+ASSISTANT_LEAVE_TIME = int(getenv("ASSISTANT_LEAVE_TIME",  7400))
 
 
 # Get this credentials from https://developer.spotify.com/dashboard
@@ -88,20 +88,20 @@ autoclean = []
 confirmer = {}
 
 
-START_IMG_URL = ["https://i.imgur.com/VJXBOzx.png",
-                 "https://i.imgur.com/VJXBOzx.png",
-                 "https://i.imgur.com/VJXBOzx.png",]
+START_IMG_URL = ["https://8upload.com/image/684032da80007/download__4_.png",
+                 "https://8upload.com/image/684033e8e1aea/download__3_.png",
+                 "https://8upload.com/image/6840340f3c1c1/images__9_.jpeg",]
     
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://i.imgur.com/VJXBOzx.png"
+    "PING_IMG_URL", "https://8upload.com/image/6840340f3c1c1/images__9_.jpeg"
 )
-PLAYLIST_IMG_URL = "https://i.imgur.com/VJXBOzx.png"
-STATS_IMG_URL = "https://telegra.ph/file/edd388a42dd2c499fd868.jpg"
-TELEGRAM_AUDIO_URL = "https://telegra.ph/file/492a3bb2e880d19750b79.jpg"
-TELEGRAM_VIDEO_URL = "https://telegra.ph/file/492a3bb2e880d19750b79.jpg"
-STREAM_IMG_URL = "https://graph.org/file/ff2af8d4d10afa1baf49e.jpg"
+PLAYLIST_IMG_URL = "https://8upload.com/image/6840340f3c1c1/images__9_.jpeg"
+STATS_IMG_URL = "https://8upload.com/image/684033e8e1aea/download__3_.png"
+TELEGRAM_AUDIO_URL = "https://8upload.com/image/684032da80007/download__4_.png"
+TELEGRAM_VIDEO_URL = "https://8upload.com/image/684033748ce0e/images__2_.png"
+STREAM_IMG_URL = "https://8upload.com/image/684033e8e1aea/download__3_.png"
 SOUNCLOUD_IMG_URL = "https://graph.org/file/c95a687e777b55be1c792.jpg"
-YOUTUBE_IMG_URL = "https://graph.org/file/e8730fdece86a1166f608.jpg"
+YOUTUBE_IMG_URL = "https://8upload.com/image/684032da80007/download__4_.png"
 SPOTIFY_ARTIST_IMG_URL = "https://graph.org/file/0bb6f36796d496b4254ff.jpg"
 SPOTIFY_ALBUM_IMG_URL = "https://graph.org/file/0bb6f36796d496b4254ff.jpg"
 SPOTIFY_PLAYLIST_IMG_URL = "https://graph.org/file/0bb6f36796d496b4254ff.jpg"
