@@ -87,9 +87,10 @@ votemode = {}
 autoclean = []
 confirmer = {}
 
-START_IMG_URL = ["https://i.imgur.com/VJXBOzx.png",
-                 "https://i.imgur.com/VJXBOzx.png",
-                 "https://i.imgur.com/VJXBOzx.png",]
+START_IMG_URL = ["https://te.legra.ph/file/5fd13f2cc0d03bce9f7f2.jpg",
+                 "https://te.legra.ph/file/c15d01b3e6b40ea141dc9.jpg",
+                 "https://te.legra.ph/file/58b491b39cee854695fa9.jpg",
+                 "https://telegra.ph/file/17b5a312f5385556787e0.jpg"]
     
 PING_IMG_URL = getenv(
     "PING_IMG_URL", "https://i.imgur.com/VJXBOzx.png"
