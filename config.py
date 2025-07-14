@@ -87,22 +87,20 @@ votemode = {}
 autoclean = []
 confirmer = {}
 
-START_IMG_URL = ["https://te.legra.ph/file/5fd13f2cc0d03bce9f7f2.jpg",
-                 "https://te.legra.ph/file/c15d01b3e6b40ea141dc9.jpg",
-                 "https://te.legra.ph/file/58b491b39cee854695fa9.jpg",
-                 "https://telegra.ph/file/17b5a312f5385556787e0.jpg"]
+START_IMG_URL = ["https://ibb.co/Y7qV4281",
+                 "https://ibb.co/svJtHgLJ"]
     
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://te.legra.ph/file/5fd13f2cc0d03bce9f7f2.jpg"
+    "PING_IMG_URL", "https://ibb.co/svJtHgLJ"
 )
-PLAYLIST_IMG_URL = "https://8upload.com/image/68387f6b223b6/IMG_20240714_115417_789.jpg"
-STATS_IMG_URL = "https://telegra.ph/file/edd388a42dd2c499fd868.jpg"
-TELEGRAM_AUDIO_URL = "https://8upload.com/image/68387f6b223b6/IMG_20240714_115417_789.jpg"
-TELEGRAM_VIDEO_URL = "https://telegra.ph/file/492a3bb2e880d19750b79.jpg"
-STREAM_IMG_URL = "https://graph.org/file/ff2af8d4d10afa1baf49e.jpg"
-SOUNCLOUD_IMG_URL = "https://graph.org/file/c95a687e777b55be1c792.jpg"
-YOUTUBE_IMG_URL = "https://8upload.com/image/68387f6b223b6/IMG_20240714_115417_789.jpg"
-SPOTIFY_ARTIST_IMG_URL = "https://graph.org/file/0bb6f36796d496b4254ff.jpg"
+PLAYLIST_IMG_URL = "https://ibb.co/Y7qV4281"
+STATS_IMG_URL = "https://ibb.co/svJtHgLJ"
+TELEGRAM_AUDIO_URL = "https://ibb.co/Y7qV4281"
+TELEGRAM_VIDEO_URL = "https://ibb.co/Y7qV4281"
+STREAM_IMG_URL = "https://ibb.co/Y7qV4281"
+SOUNCLOUD_IMG_URL = "https://ibb.co/Y7qV4281"
+YOUTUBE_IMG_URL = "https://ibb.co/svJtHgLJ"
+SPOTIFY_ARTIST_IMG_URL = "https://ibb.co/Y7qV4281"
 SPOTIFY_ALBUM_IMG_URL = "https://graph.org/file/0bb6f36796d496b4254ff.jpg"
 SPOTIFY_PLAYLIST_IMG_URL = "https://graph.org/file/0bb6f36796d496b4254ff.jpg"
 
