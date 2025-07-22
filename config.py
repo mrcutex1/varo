@@ -87,22 +87,22 @@ votemode = {}
 autoclean = []
 confirmer = {}
 
-START_IMG_URL = ["https://ibb.co/PvtxqnRc",
-                 "https://ibb.co/PvtxqnRc"]
+START_IMG_URL = ["https://ibb.co/Y7qV4281",
+                 "https://ibb.co/svJtHgLJ"]
     
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://ibb.co/PvtxqnRc"
+    "PING_IMG_URL", "https://ibb.co/Y7qV4281"
 )
-PLAYLIST_IMG_URL = "https://ibb.co/PvtxqnRc"
-STATS_IMG_URL = "https://ibb.co/PvtxqnRc"
-TELEGRAM_AUDIO_URL = "https://ibb.co/PvtxqnRc"
-TELEGRAM_VIDEO_URL = "https://ibb.co/PvtxqnRc"
-STREAM_IMG_URL = "https://ibb.co/PvtxqnRc"
-SOUNCLOUD_IMG_URL = "https://ibb.co/PvtxqnRc"
-YOUTUBE_IMG_URL = "https://ibb.co/PvtxqnRc"
-SPOTIFY_ARTIST_IMG_URL = "https://ibb.co/PvtxqnRc"
-SPOTIFY_ALBUM_IMG_URL = "https://ibb.co/PvtxqnRc"
-SPOTIFY_PLAYLIST_IMG_URL = "https://ibb.co/PvtxqnRc"
+PLAYLIST_IMG_URL = "https://ibb.co/svJtHgLJ"
+STATS_IMG_URL = "https://ibb.co/Y7qV4281"
+TELEGRAM_AUDIO_URL = "https://ibb.co/svJtHgLJ"
+TELEGRAM_VIDEO_URL = "https://ibb.co/Y7qV4281"
+STREAM_IMG_URL = "https://ibb.co/svJtHgLJ"
+SOUNCLOUD_IMG_URL = "https://ibb.co/Y7qV4281"
+YOUTUBE_IMG_URL = "https://ibb.co/svJtHgLJ"
+SPOTIFY_ARTIST_IMG_URL = "https://ibb.co/Y7qV4281"
+SPOTIFY_ALBUM_IMG_URL = "https://ibb.co/svJtHgLJ"
+SPOTIFY_PLAYLIST_IMG_URL = "https://ibb.co/Y7qV4281"
 
 if SUPPORT_CHANNEL:
     if not re.match("(?:http|https)://", SUPPORT_CHANNEL):
