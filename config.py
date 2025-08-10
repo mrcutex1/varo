@@ -40,7 +40,7 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/mrcutex1/siri",
+    "https://github.com/mrcutex1/varo",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 GIT_TOKEN = getenv(
@@ -87,22 +87,22 @@ votemode = {}
 autoclean = []
 confirmer = {}
 
-START_IMG_URL = ["https://ibb.co/Y7qV4281",
-                 "https://ibb.co/svJtHgLJ"]
+START_IMG_URL = ["https://ibb.co/F4s3Nm6s",
+                 "https://ibb.co/PvtxqnRc"]
     
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://ibb.co/Y7qV4281"
+    "PING_IMG_URL", "https://ibb.co/F4s3Nm6s"
 )
-PLAYLIST_IMG_URL = "https://ibb.co/svJtHgLJ"
-STATS_IMG_URL = "https://ibb.co/Y7qV4281"
-TELEGRAM_AUDIO_URL = "https://ibb.co/svJtHgLJ"
-TELEGRAM_VIDEO_URL = "https://ibb.co/Y7qV4281"
-STREAM_IMG_URL = "https://ibb.co/svJtHgLJ"
+PLAYLIST_IMG_URL = "https://ibb.co/PvtxqnRc"
+STATS_IMG_URL = "https://ibb.co/F4s3Nm6s"
+TELEGRAM_AUDIO_URL = "https://ibb.co/PvtxqnRc"
+TELEGRAM_VIDEO_URL = "https://ibb.co/PvtxqnRc"
+STREAM_IMG_URL = "https://ibb.co/F4s3Nm6s"
 SOUNCLOUD_IMG_URL = "https://ibb.co/Y7qV4281"
-YOUTUBE_IMG_URL = "https://ibb.co/svJtHgLJ"
-SPOTIFY_ARTIST_IMG_URL = "https://ibb.co/Y7qV4281"
-SPOTIFY_ALBUM_IMG_URL = "https://ibb.co/svJtHgLJ"
-SPOTIFY_PLAYLIST_IMG_URL = "https://ibb.co/Y7qV4281"
+YOUTUBE_IMG_URL = "https://ibb.co/F4s3Nm6s"
+SPOTIFY_ARTIST_IMG_URL = "https://ibb.co/PvtxqnRc"
+SPOTIFY_ALBUM_IMG_URL = "https://ibb.co/PvtxqnRc"
+SPOTIFY_PLAYLIST_IMG_URL = "https://ibb.co/PvtxqnRc"
 
 if SUPPORT_CHANNEL:
     if not re.match("(?:http|https)://", SUPPORT_CHANNEL):
