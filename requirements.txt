@@ -22,6 +22,10 @@ speedtest-cli
 spotipy
 tgcrypto
 unidecode
+tgcrypto;sys_platform != "win32"
+unidecode
+uvloop;sys_platform != "win32"
 yt-dlp
-youtube-search
-youtube-search-python
+yt-search-py
+#youtube-search
+#youtube-search-python
